@@ -2,4 +2,4 @@
 Kelas : 
 1. Sulthan Fathan Albany, 255150707111076
 2. Gabriela Bening Kumala, 255150707111083
-2. Abdullah Umar, 255150707111***
+3. Abdullah Muhammad Umar, 255150707111039
