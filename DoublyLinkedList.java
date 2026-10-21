@@ -135,11 +135,29 @@ public class DoublyLinkedList implements LinkedList{
         // TODO digunakan untuk mencetak data pada linked list dengan urutan terbalik, dari tail ke head.
         
     }
+
+    // ===================== BAGIAN REMOVE =====================
     @Override
     public boolean remove(Object targetData) {
-        // TODO digunakan untuk mencari dan menghapus node dengan data=targetData pada linked list serta mengembalikan nilai True jika berhasil, dan False jika targetData tidak ada di linkedList
+        Node2P cur = head;
+        while (cur != null) {
+            if (java.util.Objects.equals(targetData, cur.data)) {
+                if (cur == head) {
+                    deleteFirst();
+                } else if (cur == tail) {
+                    deleteLast();
+                } else {
+                    cur.prev.next = cur.next;
+                    cur.next.prev = cur.prev;
+                    size--;
+                }
+                return true;
+            }
+            cur = cur.next;
+        }
         return false;
     }
+
     @Override
     public Object[] toArray() {
         // TODO digunakan untuk mendapatkan keseluruhan data pada node-node di linked list dalam bentuk array. Data-data pada array disusun secara urut mulai dari head sampai dengan tail.

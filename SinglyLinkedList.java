@@ -129,11 +129,30 @@ public class SinglyLinkedList implements LinkedList{
         // TODO digunakan untuk mencetak data pada linked list dengan urutan terbalik, dari tail ke head.
         
     }
+
+    // ===================== BAGIAN REMOVE =====================
     @Override
     public boolean remove(Object targetData) {
-        // TODO digunakan untuk mencari dan menghapus node dengan data=targetData pada linked list serta mengembalikan nilai True jika berhasil, dan False jika targetData tidak ada di linkedList
+        Node prev = null;
+        Node cur = head;
+        while (cur != null) {
+            if (java.util.Objects.equals(targetData, cur.data)) {
+                if (prev == null) {               // hapus head
+                    head = cur.pointer;
+                    if (cur == tail) tail = null; // list jadi kosong
+                } else {                          // hapus tengah / tail
+                    prev.pointer = cur.pointer;
+                    if (cur == tail) tail = prev;
+                }
+                size--;
+                return true;
+            }
+            prev = cur;
+            cur = cur.pointer;
+        }
         return false;
     }
+
     @Override
     public Object[] toArray() {
         // TODO digunakan untuk mendapatkan keseluruhan data pada node-node di linked list dalam bentuk array. Data-data pada array disusun secara urut mulai dari head sampai dengan tail.
