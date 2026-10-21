@@ -127,9 +127,18 @@ public class DoublyLinkedList implements LinkedList{
     }
     @Override
     public int indexOf(Object targetData) {
-        // TODO digunakan mencari kemunculan pertama targetData pada linked list dan mengembalikan indeksnya. Indeks dari head adalah 0. Jika tidak ada targetData pada linked list, kembalikan nilai -1 
-        return 0;
+       Node2P cur = head;
+        int i = 0;
+        while (cur != null) {
+            if (java.util.Objects.equals(targetData, cur.data)) {
+                return i;
+            }
+            cur = cur.next;
+            i++;
+        }
+        return -1;
     }
+
     @Override
     public void printReverse() {
         // TODO digunakan untuk mencetak data pada linked list dengan urutan terbalik, dari tail ke head.
@@ -160,7 +169,12 @@ public class DoublyLinkedList implements LinkedList{
 
     @Override
     public Object[] toArray() {
-        // TODO digunakan untuk mendapatkan keseluruhan data pada node-node di linked list dalam bentuk array. Data-data pada array disusun secara urut mulai dari head sampai dengan tail.
-        return null;
+        Object[] arr = new Object[size];
+        Node2P cur = head;
+        for (int i = 0; i < size; i++) {
+            arr[i] = cur.data;
+            cur = cur.next;
+        }
+        return arr;
     }
 }
