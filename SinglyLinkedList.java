@@ -116,7 +116,17 @@ public class SinglyLinkedList implements LinkedList{
     }
     @Override
     public Object get(int index) {
-        // TODO digunakan untuk mengembalikan data pada index ke-i dimulai dari head. Head memiliki index 0
+    if (index < 0 || index >= size) {
+        return null;
+
+    }
+    Node currentNode = head;
+
+    for (int i = 0; i < index; i++) {
+        currentNode = currentNode.pointer;
+    }
+    return currentNode.data;
+}
         return null;
     }
    
@@ -136,8 +146,16 @@ public class SinglyLinkedList implements LinkedList{
 
     @Override
     public void printReverse() {
-        // TODO digunakan untuk mencetak data pada linked list dengan urutan terbalik, dari tail ke head.
-        
+     printReverseHelper(head);
+}
+
+private void printReverseHelper(Node currentNode) {
+    if (currentNode == null) {
+        return;
+    }
+
+    printReverseHelper(currentNode.pointer);
+    System.out.println(currentNode.data);        
     }
 
     // ===================== BAGIAN REMOVE =====================

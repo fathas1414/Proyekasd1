@@ -122,7 +122,18 @@ public class DoublyLinkedList implements LinkedList{
 
     @Override
     public Object get(int index) {
-        // TODO digunakan untuk mengembalikan data pada index ke-i dimulai dari head. Head memiliki index 0
+    if (index < 0 || index >= size) {
+        return null;
+    }
+
+    Node2P currentNode = head;
+
+    for (int i = 0; i < index; i++) {
+        currentNode = currentNode.next;
+    }
+
+    return currentNode.data;
+}
         return null;
     }
     @Override
@@ -141,8 +152,12 @@ public class DoublyLinkedList implements LinkedList{
 
     @Override
     public void printReverse() {
-        // TODO digunakan untuk mencetak data pada linked list dengan urutan terbalik, dari tail ke head.
-        
+         Node2P currentNode = tail;
+
+    while (currentNode != null) {
+        System.out.println(currentNode.data);
+        currentNode = currentNode.prev;
+    }
     }
 
     // ===================== BAGIAN REMOVE =====================
