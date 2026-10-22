@@ -122,23 +122,22 @@ public class DoublyLinkedList implements LinkedList{
 
     @Override
     public Object get(int index) {
-    if (index < 0 || index >= size) {
-        return null;
+        if (index < 0 || index >= size) {
+            return null;
+        }
+
+        Node2P currentNode = head;
+
+        for (int i = 0; i < index; i++) {
+            currentNode = currentNode.next;
+        }
+
+        return currentNode.data;
     }
 
-    Node2P currentNode = head;
-
-    for (int i = 0; i < index; i++) {
-        currentNode = currentNode.next;
-    }
-
-    return currentNode.data;
-}
-        return null;
-    }
     @Override
     public int indexOf(Object targetData) {
-       Node2P cur = head;
+        Node2P cur = head;
         int i = 0;
         while (cur != null) {
             if (java.util.Objects.equals(targetData, cur.data)) {
@@ -152,15 +151,14 @@ public class DoublyLinkedList implements LinkedList{
 
     @Override
     public void printReverse() {
-         Node2P currentNode = tail;
+        Node2P currentNode = tail;
 
-    while (currentNode != null) {
-        System.out.println(currentNode.data);
-        currentNode = currentNode.prev;
-    }
+        while (currentNode != null) {
+            System.out.println(currentNode.data);
+            currentNode = currentNode.prev;
+        }
     }
 
-    // ===================== BAGIAN REMOVE =====================
     @Override
     public boolean remove(Object targetData) {
         Node2P cur = head;

@@ -114,22 +114,22 @@ public class SinglyLinkedList implements LinkedList{
             currentNode = currentNode.pointer;
         }
     }
+
     @Override
     public Object get(int index) {
-    if (index < 0 || index >= size) {
-        return null;
+        if (index < 0 || index >= size) {
+            return null;
+        }
 
-    }
-    Node currentNode = head;
+        Node currentNode = head;
 
-    for (int i = 0; i < index; i++) {
-        currentNode = currentNode.pointer;
+        for (int i = 0; i < index; i++) {
+            currentNode = currentNode.pointer;
+        }
+
+        return currentNode.data;
     }
-    return currentNode.data;
-}
-        return null;
-    }
-   
+
     @Override
     public int indexOf(Object targetData) {
         Node cur = head;
@@ -146,29 +146,28 @@ public class SinglyLinkedList implements LinkedList{
 
     @Override
     public void printReverse() {
-     printReverseHelper(head);
-}
-
-private void printReverseHelper(Node currentNode) {
-    if (currentNode == null) {
-        return;
+        printReverseHelper(head);
     }
 
-    printReverseHelper(currentNode.pointer);
-    System.out.println(currentNode.data);        
+    private void printReverseHelper(Node currentNode) {
+        if (currentNode == null) {
+            return;
+        }
+
+        printReverseHelper(currentNode.pointer);
+        System.out.println(currentNode.data);
     }
 
-    // ===================== BAGIAN REMOVE =====================
     @Override
     public boolean remove(Object targetData) {
         Node prev = null;
         Node cur = head;
         while (cur != null) {
             if (java.util.Objects.equals(targetData, cur.data)) {
-                if (prev == null) {               // hapus head
+                if (prev == null) {               
                     head = cur.pointer;
-                    if (cur == tail) tail = null; // list jadi kosong
-                } else {                          // hapus tengah / tail
+                    if (cur == tail) tail = null; 
+                } else {                          
                     prev.pointer = cur.pointer;
                     if (cur == tail) tail = prev;
                 }
